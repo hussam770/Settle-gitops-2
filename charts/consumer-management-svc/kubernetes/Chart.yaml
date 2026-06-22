@@ -1,0 +1,5 @@
+---
+apiVersion: v1
+name: consumer-management-svc
+version: 1.0-SNAPSHOT
+appVersion: 1.0-SNAPSHOT

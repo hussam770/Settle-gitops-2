@@ -1,0 +1,24 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    jkube.eclipse.org/git-commit: 777d26f44ddda1ac7307a5373f85c53ee1f9cc8b
+    jkube.eclipse.org/git-url: https://dev.azure.com/ThiqahDev/Bookstack/_git/Bookstack
+    jkube.eclipse.org/git-branch: 777d26f44ddda1ac7307a5373f85c53ee1f9cc8b
+  labels:
+    app: consumer-management-svc
+    provider: jkube
+    version: 1.0-SNAPSHOT
+    group: com.getsettle
+    app.kubernetes.io/part-of: com.getsettle
+    app.kubernetes.io/managed-by: jkube
+    app.kubernetes.io/name: consumer-management-svc
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+  name: consumer-management-svc-config
+data:
+  APP_ENV: production
+  LOG_LEVEL: info
+  application.properties: |-
+    server.port=8080
+    spring.application.name=consumer-management-svc

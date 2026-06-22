@@ -1,0 +1,95 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    jkube.eclipse.org/git-commit: 777d26f44ddda1ac7307a5373f85c53ee1f9cc8b
+    jkube.eclipse.org/git-url: https://dev.azure.com/ThiqahDev/Bookstack/_git/Bookstack
+    jkube.eclipse.org/git-branch: 777d26f44ddda1ac7307a5373f85c53ee1f9cc8b
+  labels:
+    app: consumer-management-svc
+    provider: jkube
+    version: 1.0-SNAPSHOT
+    group: com.getsettle
+    app.kubernetes.io/part-of: com.getsettle
+    app.kubernetes.io/managed-by: jkube
+    app.kubernetes.io/name: consumer-management-svc
+    app.kubernetes.io/version: 1.0-SNAPSHOT
+  name: consumer-management-svc
+spec:
+  replicas: 2
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: consumer-management-svc
+      provider: jkube
+      group: com.getsettle
+      app.kubernetes.io/name: consumer-management-svc
+      app.kubernetes.io/part-of: com.getsettle
+      app.kubernetes.io/managed-by: jkube
+  template:
+    metadata:
+      annotations:
+        jkube.eclipse.org/git-commit: 777d26f44ddda1ac7307a5373f85c53ee1f9cc8b
+        jkube.eclipse.org/git-url: https://dev.azure.com/ThiqahDev/Bookstack/_git/Bookstack
+        jkube.eclipse.org/git-branch: 777d26f44ddda1ac7307a5373f85c53ee1f9cc8b
+      labels:
+        app: consumer-management-svc
+        provider: jkube
+        version: 1.0-SNAPSHOT
+        group: com.getsettle
+        app.kubernetes.io/part-of: com.getsettle
+        app.kubernetes.io/managed-by: jkube
+        app.kubernetes.io/name: consumer-management-svc
+        app.kubernetes.io/version: 1.0-SNAPSHOT
+    spec:
+      containers:
+      - env:
+        - name: APP_CONFIG_PATH
+          value: /etc/config
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        envFrom:
+        - configMapRef:
+            name: consumer-management-svc-config
+        image: 7uss770/settle:353597
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 180
+          successThreshold: 1
+        name: my-app
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          successThreshold: 1
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: 500m
+          requests:
+            memory: 256Mi
+            cpu: 250m
+        securityContext:
+          privileged: false
+        volumeMounts:
+        - mountPath: /etc/config
+          name: config-volume
+      volumes:
+      - configMap:
+          name: consumer-management-svc-config
+        name: config-volume
