@@ -3,9 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    jkube.eclipse.org/git-commit: 025ff0ed54166f499a58093d7fe2751994f65ffb
+    jkube.eclipse.org/git-commit: 9585a83152471fe4498a65c198fd2e593918b11e
     jkube.eclipse.org/git-url: https://dev.azure.com/ThiqahDev/Bookstack/_git/Bookstack
-    jkube.eclipse.org/git-branch: 025ff0ed54166f499a58093d7fe2751994f65ffb
+    jkube.eclipse.org/git-branch: 9585a83152471fe4498a65c198fd2e593918b11e
   labels:
     app: consumer-management-svc
     provider: jkube
@@ -30,9 +30,9 @@ spec:
   template:
     metadata:
       annotations:
-        jkube.eclipse.org/git-commit: 025ff0ed54166f499a58093d7fe2751994f65ffb
+        jkube.eclipse.org/git-commit: 9585a83152471fe4498a65c198fd2e593918b11e
         jkube.eclipse.org/git-url: https://dev.azure.com/ThiqahDev/Bookstack/_git/Bookstack
-        jkube.eclipse.org/git-branch: 025ff0ed54166f499a58093d7fe2751994f65ffb
+        jkube.eclipse.org/git-branch: 9585a83152471fe4498a65c198fd2e593918b11e
       labels:
         app: consumer-management-svc
         provider: jkube
@@ -58,7 +58,7 @@ spec:
         envFrom:
         - configMapRef:
             name: consumer-management-svc-config
-        image: 7uss770/settle:354572
+        image: 7uss770/settle:354635
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
