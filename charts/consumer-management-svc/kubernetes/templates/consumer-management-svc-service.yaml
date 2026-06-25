@@ -3,9 +3,9 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    jkube.eclipse.org/git-commit: 777d26f44ddda1ac7307a5373f85c53ee1f9cc8b
+    jkube.eclipse.org/git-commit: 9052960e71ad1b7a69692037fb3d4ffa88dc285f
     jkube.eclipse.org/git-url: https://dev.azure.com/ThiqahDev/Bookstack/_git/Bookstack
-    jkube.eclipse.org/git-branch: 777d26f44ddda1ac7307a5373f85c53ee1f9cc8b
+    jkube.eclipse.org/git-branch: 9052960e71ad1b7a69692037fb3d4ffa88dc285f
   labels:
     app: consumer-management-svc
     provider: jkube
