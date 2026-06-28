@@ -3,9 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    jkube.eclipse.org/git-commit: 119fbf201b2168bcf53041253867a3675cb8a13e
+    jkube.eclipse.org/git-commit: 3df5fe2a84862b9a36386af54d47e7f5eaf1fd08
     jkube.eclipse.org/git-url: https://dev.azure.com/ThiqahDev/Bookstack/_git/Bookstack
-    jkube.eclipse.org/git-branch: 119fbf201b2168bcf53041253867a3675cb8a13e
+    jkube.eclipse.org/git-branch: 3df5fe2a84862b9a36386af54d47e7f5eaf1fd08
   labels:
     app: consumer-management-svc
     provider: jkube
@@ -30,9 +30,9 @@ spec:
   template:
     metadata:
       annotations:
-        jkube.eclipse.org/git-commit: 119fbf201b2168bcf53041253867a3675cb8a13e
+        jkube.eclipse.org/git-commit: 3df5fe2a84862b9a36386af54d47e7f5eaf1fd08
         jkube.eclipse.org/git-url: https://dev.azure.com/ThiqahDev/Bookstack/_git/Bookstack
-        jkube.eclipse.org/git-branch: 119fbf201b2168bcf53041253867a3675cb8a13e
+        jkube.eclipse.org/git-branch: 3df5fe2a84862b9a36386af54d47e7f5eaf1fd08
       labels:
         app: consumer-management-svc
         provider: jkube
@@ -57,8 +57,8 @@ spec:
               fieldPath: metadata.name
         envFrom:
         - configMapRef:
-            name: consumer-configmap
-        image: 7uss770/settle:355422
+            name: consumer-management-svc-config
+        image: 7uss770/settle:355605
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
